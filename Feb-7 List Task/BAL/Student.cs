@@ -119,30 +119,30 @@ namespace Feb_7_List_Task.BAL
 
 
 
-            //public List<string> GetStudentAgeRange(int startyear, int endyear) //Get Student age range
+        public List<string> GetStudentAgeRange(int start, int end) //Get Student age range
 
-            // {
-            //List<StudentModel3> lstStudent = GetStudentList();
-            //List<StudentModel3> filterList4 = new(); //0
-
-
-            //foreach (StudentModel3 student2 in lstStudent)
-            //{
-            //    string student3 = student2.Where(student2.DOB.Year >= startyear && student2.DOB.Year <= endyear).Add(student2); 
-             
-            //        Console.WriteLine(student3);
-         
-
-            //}
-
-                   
-
-            //return filterList4;
-
-        //}
+        {
+            List<StudentModel3> lstStudent = GetStudentList();
+            List<StudentModel3> filterList4 = new();
+            int year = DateTime.Now.Year;
 
 
-        public List <string> ShowDOB() //show Dob
+            foreach (StudentModel3 student2 in lstStudent)
+            {
+                if (student2.DOB.Year <= DateTime.Now.AddYears(-start).Year && student2.DOB.Year >= DateTime.Now.AddYears(-end).Year)
+                {
+                    filterList4.Add(student2);
+
+                }
+            }
+
+
+            return filterList4.Select(x => x.Name + " Year of birth: " + x.DOB.Year + " Age: " + (DateTime.Now.Year - x.DOB.Year)).ToList();
+
+        }
+
+
+            public List <string> ShowDOB() //show Dob
          {
             List<StudentModel3> lstStudent = GetStudentList();
             List<string> list3 = new List<string>();

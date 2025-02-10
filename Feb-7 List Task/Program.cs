@@ -59,9 +59,16 @@ Student objStudent = new();
 //{
 //    Console.WriteLine(s);
 //}
-List<string> students2 = objStudent.GetUpdatedStudentlist();
+//List<string> students2 = objStudent.GetUpdatedStudentlist();
 
-foreach (string student in students2)
+//foreach (string student in students2)
+//{
+//    Console.WriteLine(student);
+
+
+//}
+List<string> agerange = objStudent.GetStudentAgeRange(20, 24);
+foreach (string student in agerange)
 {
     Console.WriteLine(student);
 }
